@@ -27,6 +27,17 @@ void removeFirst(Node *target) {
     free(removeNode);
 }
 
+Node* findNode(Node *node, int value) {
+    Node *curr = node -> next;
+    while (curr != NULL) {
+        if (curr -> data == value) {
+            return curr;
+        }
+        curr = curr -> next;
+    }
+    return NULL;
+}
+
 int main() {
     Node *head = malloc(sizeof(Node));
     head -> next = NULL;
@@ -36,6 +47,8 @@ int main() {
     addFirst(head, 30);
     removeFirst(head);
     addFirst(head, 100);
+    
+    printf("find noed: %d\n", findNode(head, 20) -> data);
     
     Node *curr = head -> next;
     while (curr != NULL) {
